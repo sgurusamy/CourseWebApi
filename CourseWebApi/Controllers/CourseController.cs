@@ -10,17 +10,24 @@ namespace CourseWebApi.Controllers
     public class CourseController : ApiController
     {
         // POST api/values
-        public String Post([FromBody]List<string> inputs)
+        public HttpResponseMessage Post([FromBody]List<string> courseList)
         {
-            if (inputs != null)
+            try
             {
+                //input is null.
+                if (courseList == null || courseList.Count == 0)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest,"List is null or empty");
+                }
 
-                return String.Join(",", inputs);
+                return Request.CreateResponse(HttpStatusCode.Created, "");
+
             }
-            else
+            catch (Exception ex)
             {
-                return "Nothing received";
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message));
             }
+
         }
     }
 }
