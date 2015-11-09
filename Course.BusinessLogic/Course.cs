@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Course.Persistence;
 
 namespace Course.BusinessLogic
 {
@@ -170,12 +171,31 @@ namespace Course.BusinessLogic
 
         public void SaveCourse()
         {
+            CourseRepository repo = new CourseRepository();
+            List<string> getAllCourses = repo.getAllCourses();
 
+            var abc = getAllCourses.Intersect(orderedCourseList.ToList<string>());
+            foreach (string str in abc)
+            {
+                isCourseAlreadyExists = true;
+                return;
+            }
+            foreach (string course in orderedCourseList)
+                repo.AddCourse(course);
         }
 
         public void SaveCourseWithPreRequisite()
         {
-
+            CourseRepository repo = new CourseRepository();
+            string[] courseAlongWithPre = new string[2];
+            foreach (string course in this.allCourses)
+            {
+                courseAlongWithPre = course.Split(':');
+                if (!withoutPreRequisiteCourses.Any(str => str.Contains(courseAlongWithPre[0])))
+                    repo.AddCoursewithPreRequiste(courseAlongWithPre[0].Trim(), courseAlongWithPre[1].Trim());
+                else
+                    repo.AddCoursewithPreRequiste(courseAlongWithPre[0], string.Empty);
+            }
         }
     }
 }

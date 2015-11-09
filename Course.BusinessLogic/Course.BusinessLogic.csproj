@@ -43,6 +43,12 @@
     <Compile Include="ICourse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Course.Persistence\Course.Persistence.csproj">
+      <Project>{d978bf38-a751-434b-9364-1b7248664341}</Project>
+      <Name>Course.Persistence</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

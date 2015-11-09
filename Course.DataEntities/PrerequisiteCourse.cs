@@ -8,6 +8,8 @@ namespace Course.DataEntities
 {
     public class PrerequisiteCourse
     {
+        public int Id_Course { get; set; }
+        public Nullable<int> Id_Prereq_Course { get; set; }
 
     }
 }

@@ -8,6 +8,7 @@ namespace Course.DataEntities
 {
     public class Course
     {
-
+        public int CourseID { get; set; }
+        public string Description { get; set; }
     }
 }
