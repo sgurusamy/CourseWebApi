@@ -8,6 +8,6 @@ namespace Course.Facade
 {
     interface ICourseFacade
     {
-        string ProcessInputs(List<string> courseList);
+        string OrderCourses(List<string> courseList);
     }
 }

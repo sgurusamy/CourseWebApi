@@ -43,6 +43,12 @@
     <Compile Include="ICourseFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Course.BusinessLogic\Course.BusinessLogic.csproj">
+      <Project>{a04416be-3472-4107-9b93-1e2042a7d95a}</Project>
+      <Name>Course.BusinessLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

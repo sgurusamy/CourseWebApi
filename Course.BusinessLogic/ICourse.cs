@@ -8,6 +8,6 @@ namespace Course.BusinessLogic
 {
     public interface ICourse
     {
-        string ProcessInputs(List<string> courseList);
+        string OrderCourses(List<string> courseList);
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Course.Facade;
 
 namespace CourseWebApi.Controllers
 {
@@ -19,9 +20,10 @@ namespace CourseWebApi.Controllers
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest,"List is null or empty");
                 }
-
-                return Request.CreateResponse(HttpStatusCode.Created, "");
-
+                CourseFacade courseFacade = new CourseFacade();
+                String response = courseFacade.OrderCourses(courseList);
+                HttpResponseMessage responseobj = Request.CreateResponse(HttpStatusCode.Created, response);
+                return responseobj;
             }
             catch (Exception ex)
             {
