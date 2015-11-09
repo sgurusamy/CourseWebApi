@@ -1,0 +1,21 @@
+USE [Course]
+GO
+
+/****** Object:  Table [dbo].[Course]    Script Date: 11/9/2015 10:33:26 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Course](
+	[CourseID] [int] IDENTITY(1,1) NOT NULL,
+	[Description] [nvarchar](200) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[CourseID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+

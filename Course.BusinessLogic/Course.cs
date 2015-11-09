@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Course.Persistence;
+using System.Configuration;
 
 namespace Course.BusinessLogic
 {
@@ -53,10 +54,19 @@ namespace Course.BusinessLogic
                 }
             }
 
-            SaveCourse();
-            if (!isCourseAlreadyExists)
+            //if the course already exist.. then the entire insert is ignored.
+            //TODO: Need to implement database lookup based course...
+
+            //if the course already exist.. then the entire insert is ignored.
+            bool enablePersistence;
+            bool.TryParse(ConfigurationManager.AppSettings["EnablePersistence"], out enablePersistence);
+            if (enablePersistence)
             {
-                SaveCourseWithPreRequisite();
+                SaveCourse();
+                if (!isCourseAlreadyExists)
+                {
+                    SaveCourseWithPreRequisite();
+                }
             }
 
             foreach (string courses in orderedCourseList)
